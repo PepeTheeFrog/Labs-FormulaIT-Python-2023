@@ -26,13 +26,13 @@ class Library:
     def __init__(self, books=None):
         self.books = books
 
-    def get_next_book_id(self):
+    def get_next_book_id(self) -> int:
         if self.books is None:
             return 1
         else:
-            return len(self.books) + 1
+            return self.books[-1].__dict__['id_'] + 1
 
-    def get_index_by_book_id(self, id_: int):
+    def get_index_by_book_id(self, id_: int) -> int:
         for book in enumerate(self.books):
             if book[1].id_ == id_:
                 return book[0]
