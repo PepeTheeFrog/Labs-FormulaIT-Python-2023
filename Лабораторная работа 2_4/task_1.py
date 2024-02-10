@@ -56,6 +56,28 @@ class Device:
         """
         return f"Device(name={self.name}, brand={self.brand}, price={self.price})"
 
+    def compare_price(self, other) -> str:
+        """
+        Сравнивает цены текущего устройства и другого устройства.
+
+        :param other: Другой объект, с которым сравниваем текущий объект.
+        :return: Сообщение о том, какое устройство дороже.
+
+        Примеры:
+        >>> device1 = Device("Смартфон", "Apple", 999.99)
+        >>> device2 = Device("Планшет", "Samsung", 799.99)
+        >>> device1.compare_price(device2)
+        'Смартфон (Apple) дороже, чем Планшет (Samsung)'
+        """
+        if not isinstance(other, Device):
+            raise TypeError("Можно сравнивать только объекты типа Device")
+        if self.price > other.price:
+            return f"{self.name} ({self.brand}) дороже, чем {other.name} ({other.brand})"
+        elif self.price < other.price:
+            return f"{self.name} ({self.brand}) дешевле, чем {other.name} ({other.brand})"
+        else:
+            return f"Цены на {self.name} ({self.brand}) и {other.name} ({other.brand}) равны"
+
     def turn_on(self) -> None:
         """
         Включает устройство.
@@ -141,6 +163,37 @@ class Smartphone(Device):
         'Smartphone(name=iPhone, brand=Apple, price=999.99, os=iOS, screen_size=6.1)'
         """
         return f"Smartphone(name={self.name}, brand={self.brand}, price={self.price}, os={self.os}, screen_size={self.screen_size})"
+
+    def compare_price(self, other) -> str:
+        """
+        Сравнивает цены текущего смартфона с другим устройством.
+        Перегрузить метод необходимо, чтобы демострировать пользователю дополнительную информацию при сравнении цен.
+
+        :param other: Другой объект, с которым сравниваем текущий объект.
+        :return: Сообщение о том, какое устройство дороже.
+
+        Примеры:
+        >>> device1 = Smartphone("iPhone", "Apple", 999.99, "iOS", 6.1)
+        >>> device2 = Device("Планшет", "Samsung", 799.99)
+        >>> device1.compare_price(device2)
+        'Смартфон (iPhone, Apple, iOS, 6.1") дороже, чем Планшет (Samsung)'
+        """
+        if not isinstance(other, Device):
+            raise TypeError("Можно сравнивать только объекты типа Device")
+        if isinstance(other, Smartphone):
+            if self.price > other.price:
+                return f"Смартфон ({self.name}, {self.brand}, {self.os}, {self.screen_size}\") дороже, чем {other.name} ({other.brand})"
+            elif self.price < other.price:
+                return f"Смартфон ({self.name}, {self.brand}, {self.os}, {self.screen_size}\") дешевле, чем {other.name} ({other.brand})"
+            else:
+                return f"Цены на Смартфон ({self.name}, {self.brand}, {self.os}, {self.screen_size}\") и {other.name} ({other.brand}) равны"
+        else:
+            if self.price > other.price:
+                return f"{self.name} ({self.brand}) дороже, чем {other.name} ({other.brand})"
+            elif self.price < other.price:
+                return f"{self.name} ({self.brand}) дешевле, чем {other.name} ({other.brand})"
+            else:
+                return f"Цены на {self.name} ({self.brand}) и {other.name} ({other.brand}) равны"
 
     def make_call(self, number: str) -> None:
         """
