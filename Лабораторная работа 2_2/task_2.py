@@ -13,17 +13,17 @@ BOOKS_DATABASE = [
 
 
 class Book:
-    def __init__(self, id_: int, name: str, pages: int):
+    def __init__(self, id_: int, name: str, pages: int) -> None:
         self.name = name
         self.id_ = id_
         self.pages = pages
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f'Книга "{self.name}"'
 
 
 class Library:
-    def __init__(self, books=None):
+    def __init__(self, books=None) -> None:
         self.books = books
 
     def get_next_book_id(self) -> int:
