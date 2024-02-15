@@ -51,7 +51,7 @@ class Device:
 
         Примеры:
         >>> device = Device("Смартфон", "Apple", 999.99)
-        >>> device.__repr__()
+        >>> repr(device)
         'Device(name=Смартфон, brand=Apple, price=999.99)'
         """
         return f"Device(name={self.name}, brand={self.brand}, price={self.price})"
@@ -159,7 +159,7 @@ class Smartphone(Device):
 
         Примеры:
         >>> smartphone = Smartphone("iPhone", "Apple", 999.99, "iOS", 6.1)
-        >>> smartphone.__repr__()
+        >>> repr(smartphone)
         'Smartphone(name=iPhone, brand=Apple, price=999.99, os=iOS, screen_size=6.1)'
         """
         return f"Smartphone(name={self.name}, brand={self.brand}, price={self.price}, os={self.os}, screen_size={self.screen_size})"
