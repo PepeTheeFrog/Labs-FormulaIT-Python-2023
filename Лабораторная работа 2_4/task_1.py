@@ -54,7 +54,7 @@ class Device:
         >>> repr(device)
         'Device(name=Смартфон, brand=Apple, price=999.99)'
         """
-        return f"Device(name={self.name}, brand={self.brand}, price={self.price})"
+        return f"{self.__class__.__name__}(name={self.name}, brand={self.brand}, price={self.price})"
 
     def compare_price(self, other) -> str:
         """
@@ -162,7 +162,7 @@ class Smartphone(Device):
         >>> repr(smartphone)
         'Smartphone(name=iPhone, brand=Apple, price=999.99, os=iOS, screen_size=6.1)'
         """
-        return f"Smartphone(name={self.name}, brand={self.brand}, price={self.price}, os={self.os}, screen_size={self.screen_size})"
+        return f"{self.__class__.__name__}(name={self.name}, brand={self.brand}, price={self.price}, os={self.os}, screen_size={self.screen_size})"
 
     def compare_price(self, other) -> str:
         """
