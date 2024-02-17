@@ -23,7 +23,7 @@ class Book:
 
 
 class Library:
-    def __init__(self, books=None) -> None:
+    def __init__(self, books: list = None) -> None:
         self.books = books
 
     def get_next_book_id(self) -> int:
